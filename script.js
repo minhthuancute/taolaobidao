@@ -1,33 +1,16 @@
-$(document).ready(function () {
-  console.log($(window).innerHeight());
-  const elments = [
-    {
-      selector: "#slider2",
-      animation: "fadeIn",
-    },
-  ];
-  let index = 0;
-  $(window).scroll(function () {
-    const top_of_element = $(elments[0].selector).offset().top;
-    const bottom_of_element =
-      $(elments[0].selector).offset().top +
-      $(elments[0].selector).outerHeight();
-    const bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
-    const top_of_screen = $(window).scrollTop();
+const arr = [
+  [1, 2, "kia"],
+  [1, 3, "audi"],
+  [1, 4, "ford"],
+  [2, 1, "lambo"],
+  [2, 6, "Mazda"],
+];
 
-    if (
-      bottom_of_screen > top_of_element &&
-      top_of_screen < bottom_of_element
-    ) {
-      console.log("in view");
-      $(".products-item").each(function (i, obj) {
-        $(this).addClass(elments[0].animation);
-      });
-    } else {
-      console.log("not in view");
-      $(".products-item").each(function (i, obj) {
-        $(this).removeClass(elments[0].animation);
-      });
-    }
-  });
-});
+const res = arr.reduce((acc, val) => {
+  const obj = {};
+  obj[val[1]] = val[2];
+  val[0] in acc ? (acc[val[0]][val[1]] = val[2]) : (acc[val[0]] = obj);
+  return acc;
+}, {});
+
+console.log(res);

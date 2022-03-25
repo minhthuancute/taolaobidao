@@ -5,79 +5,90 @@
           box-sizing: border-box;
 }
 
-.container {
-  max-width: 1200px;
-  width: 95%;
-  margin: 0 auto;
+* ul {
+  list-style: none;
 }
 
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.slider {
+body {
   height: 100vh;
-  background-color: green;
+  background-color: #4d4c5a;
+  padding: 100px 100px 0;
+  font-family: cursive;
+  position: relative;
 }
 
-.products .container {
+.nav {
+  display: inline-block;
+  position: relative;
+}
+
+.nav li {
+  height: 50px;
+  width: 250px;
+  overflow: hidden;
+  background-color: #141519;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transition: -webkit-transform 0.6s ease;
+  transition: -webkit-transform 0.6s ease;
+  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, -webkit-transform 0.6s ease;
+  -webkit-transition-delay: var(--delay-open);
+          transition-delay: var(--delay-open);
+}
+
+.nav li a {
+  text-decoration: none;
+  color: #f8fbff;
+  font-size: 17px;
+  height: 100%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
 }
 
-.products .container .products-item {
-  -ms-flex-preferred-size: 22%;
-      flex-basis: 22%;
-  height: 100px;
-  background: pink;
+.nav li a:hover {
+  background-color: #323048;
+}
+
+.nav .nav-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  opacity: 1;
+  background-color: #141519;
+  color: #f8fbff;
+  -webkit-transition: right 1s ease, opacity 1s ease;
+  transition: right 1s ease, opacity 1s ease;
+}
+
+.nav .nav-toggle:hover {
+  background-color: #323048;
+}
+
+.nav-closed .nav-toggle {
+  right: calc(100% - 50px);
   opacity: 0;
 }
 
-.fadeIn {
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
-  -webkit-animation: fadeIn 1s linear forwards;
-          animation: fadeIn 1s linear forwards;
+.nav-closed li {
+  -webkit-transform: translateY(calc(var(--top) * -1px)) scaleY(0.1) scaleX(0.2);
+          transform: translateY(calc(var(--top) * -1px)) scaleY(0.1) scaleX(0.2);
+  -webkit-transition-delay: var(--delay-close);
+          transition-delay: var(--delay-close);
 }
 
-.fadeOut {
-  -webkit-animation: fadeOut 0.4s linear;
-          animation: fadeOut 0.4s linear;
+.nav-closed li a {
+  color: #141519;
 }
 /*# sourceMappingURL=style.css.map */
